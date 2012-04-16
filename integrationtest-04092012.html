@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="include/style.css"/>
+    <link rel="stylesheet" type="text/css" href="themes/greyhound-zillow.css"/>
+    <!--<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>-->
+    <script src="include/jquery-1.7.2.min.js"></script>
+    <script src="include/script.js"></script>
+  </head>
+  <body>
+    <section id="slides">
+      <article>
+        <h1>Integration Testing and Code Coverage</h1>
+	<h3>An examination of the code coverage process and automated integration tests.</h3>
+        <p>
+          Yusuke Tsutsumi
+          <br>
+	  4/4/2012
+        </p>
+      </article>
+      <article>
+	<h3>Overview</h3>
+	<ul>
+	  <li>Current integration testing</li>
+	  <li>Code coverage</li>
+	  <li>wfc-tes-bui-023: integration test jobs and hosts</li>
+	  <li>Workflow for integration testing</li>
+	  <li>Questions</li>
+	</ul>
+      </article>
+      <article>
+        <h3>Current Integration Testing</h3>
+        <ul>
+	  <li>Integration testing: uses failsafe plugin (surefire plugin for Int. Testing)</li>
+	  <li>Activate testing by setting property: -DtestIntegration</li>
+	  <pre>
+mvn clean install -DtestIntegration
+	  </pre>
+        </ul>
+     </article>
+     <article>
+       Should I include a slide with an example?
+     </article>
+     <article>
+       <h3>Code coverage</h3>
+       <ul>
+	 <li>Cobertura instrumentation is used</li>
+	 <li>Report is published to either some file of a specific format (e.g. HTML,XML)</li>
+	 <li>Report can be consumed by various applications (Hudson with cobertura plugin)</li>
+       </ul>
+     </article>
+     <article>
+       <h3>https://wfc-tes-bui-023.uni.zillow.local</h3>
+       <iframe width="100%" class="scale-height7" src="https://wfc-tes-bui-023.uni.zillow.local"></iframe>
+     </article>
+     <article>
+       <h3>Activating Code Coverage</h3>
+       <p>Code Coverage can be activated with profiles contained in Zillow-Parent</p>
+       <pre>
+mvn clean install -Pcobertura-instrument,get-cobertura-build,
+integration-instrument -DtestIntegration
+       </pre>
+       <ul>
+	 <li>Cobertura-instrument: instrument cobertura files to ${instrumented.classes.dir}</li>
+	 <li>Get-cobertura-build: download and extract build.xml file containing instructions for cobertura</li>
+	 <li>Instrument-integration: modify integration test plugin configuration to work with instrumentation</li>
+       </ul>
+     </article>
+     <article>
+       <h3>Generating a Coverage Report</h3>
+       <p>Two components must exist to have a usable coverage report: a coverage.xml (or html) file containing the actual instrumentation, then a folder containing sources (if you want to see the specific lines of code instrumented).</p>
+       <p>This performs both:</p>
+       <pre>
+mvn -Pgenerate-cobertura-report validate
+       </pre>
+     </article>
+     <article>
+       <h3>Customizing Instrumentation</h3>
+       <p>The following variables are set by default in Zillow-Parent. You can modify these to customize instrumentation for your project</p>
+       <ul>
+	 <li></li>
+       </ul>
+     </article>
+     <article>
+        <h1>Thank You!</h1>
+     </article>
+    </section>
+  </body>
+</html>

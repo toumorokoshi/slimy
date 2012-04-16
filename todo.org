@@ -1,0 +1,4 @@
+* Features
+** Transparent left/right buttons which light up on hover
+** left click/down default to next slide
+** Menu button with controls
