@@ -30,7 +30,7 @@ $(document).keydown(function(event) {
 	    if(slide_scale > 0.05) slide_scale -= 0.05;
 	    jQueryResize();
 	    break;
-	case 67: // c (commands)
+	case 77: // m (menu)
 	    toggleCommandScreen();
 	    break;
 	case 83: // s (styles)
@@ -53,18 +53,29 @@ function jQuerySetup() {
     $("article").css("-webkit-transform","matrix(1,0,0,1," + 
 			  2*parseInt($(window).width()) + ",0)");
     setSlide(window.slide_index);
+    controlPanel();
     slideButton();
     jQueryResize();
 }
 
+function controlPanel() {
+    $("body").append('<section id="controlpanel" class="scale-height1" ></section>');
+    $("#controlpanel").append('<span class="leftbutton">&larr;</span>');
+    $("#controlpanel").append('<span class="slidenum"></span>');
+    $("#controlpanel").append('<span class="menubutton">Menu</span>');
+    $("#controlpanel").append('<span class="rightbutton">&rarr;</span>');
+    $(".slidenum").html(String(window.slide_index));
+    $(".menubutton").click(toggleCommandScreen);
+}
+
 function slideButton() {
-    $("body").append('<section id="leftbutton" class="button">&larr;</section>');
-    $("#leftbutton").click(function() {
+    $("body").append('<section id="leftbutton" class="leftbutton button">&larr;</section>');
+    $(".leftbutton").click(function() {
 	    if(slide_index > 1)
 			setSlide(--slide_index);
     });
-    $("body").append('<section id="rightbutton" class="button">&rarr;</section>');
-    $("#rightbutton").click(function() {
+    $("body").append('<section id="rightbutton" class="rightbutton button">&rarr;</section>');
+    $(".rightbutton").click(function() {
 		if(slide_index < slide_total)
 			setSlide(++slide_index);
     });
@@ -74,15 +85,16 @@ function slideButton() {
 function jQueryResize() {
     // set article css
     $("article").css("min-height",parseInt($("#slides").height()*slide_scale*(8/9.0)));
-    $("article").css("margin-top",parseInt($("#slides").height()*(1-slide_scale)/2.0));
-    $("article").css("padding-top",parseInt($("#slides").height()*slide_scale*1/18.0));
+    $("article").css("margin-top",parseInt($("#slides").height()*(1-slide_scale)/2.0)); $("article").css("padding-top",parseInt($("#slides").height()*slide_scale*1/18.0));
     $("article").css("padding-bottom",parseInt($("#slides").height()*slide_scale*1/18.0));
     $("article").css("width",parseInt($("#slides").width()*slide_scale*(8/9.0)));
     $("article").css("margin-left",parseInt($("#slides").width()*(1-slide_scale)/2.0));
     $("article").css("margin-right",parseInt($("#slides").width()*(1-slide_scale)/2.0));
     $("article").css("padding-left",parseInt($("#slides").width()*slide_scale*1/18.0));
     $("article").css("padding-right",parseInt($("#slides").width()*slide_scale*1/18.0));
-    $(".scale-height7").css("height",parseInt($("#slides").height()*slide_scale*0.7));
+    for(var i=1; i < 11; i++) {
+	$(".scale-height" + String(i)).css("height",parseInt($("#slides").height()*slide_scale*0.1*i));
+    }
     // set next slide css
     $(".next").css("-moz-transform","translate(" + 
 			  parseInt($("#slides").width()) + "px)");
@@ -119,18 +131,20 @@ function setSlide(id) {
 	if(index == id + 1) 
 	    $(this).addClass("next");
     });
+    $(".slidenum").html(String(id + 1));
     jQueryResize();
 }
 
 function toggleCommandScreen() {
     if(!menu) {
 	$('body').append('<section id="menu"/>');
+	$('#menu').append('<h1>Menu</h1>');
 	$('#menu').append('<ul class="menu_list"/>');
 	$('.menu_list').append('<li>l/left arrow: next slide</li>');
 	$('.menu_list').append('<li>r/right arrow: previous slide</li>');
 	$('.menu_list').append('<li>+:increase slide size</li>');
 	$('.menu_list').append('<li>-:decrease slide size</li>');
-	$('.menu_list').append('<li>c:toggle this menu</li>');
+	$('.menu_list').append('<li>m:toggle this menu</li>');
 	$("#slides").css("width","80%");
 	jQueryResize();
 	menu = true;
