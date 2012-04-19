@@ -43,7 +43,7 @@ $(document).keydown(function(event) {
 	case 83: // s (styles)
 	    break;
 	default:
-	    alert(event.which);
+	    //alert(event.which);
 	    break;
     }
 });
