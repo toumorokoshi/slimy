@@ -34,8 +34,7 @@ $(document).keydown(function(event) {
 	    break;
 	case 77: // m (menu)
 	    toggleCommandScreen();
-	    break;
-	case 80: // p (preview)
+	    break; case 80: // p (preview)
 	    addPreview();
 	    break;
 	case 83: // s (styles)
@@ -126,7 +125,7 @@ function jQueryResize() {
 
 $(window).ready(jQuerySetup);
 $(window).resize(jQueryResize);
-$(window).scroll(function() { scrollLeft(0); });
+$(window).scroll(function() { $(window).scrollLeft(0); });
 
 function setSlide(id) {
     id--;
