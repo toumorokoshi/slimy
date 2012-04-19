@@ -154,6 +154,7 @@ function toggleCommandScreen() {
 	$('.menu_list').append('<li>+:increase slide size</li>');
 	$('.menu_list').append('<li>-:decrease slide size</li>');
 	$('.menu_list').append('<li>m:toggle this menu</li>');
+	$('.menu_list').append('<li>p:toggle slide preview</li>');
 	percent_width -= 20;
 	jQueryResize();
 	menu = true;
