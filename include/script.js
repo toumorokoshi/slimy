@@ -180,6 +180,10 @@ function addPreview() {
 	});
 	percent_width -= 20;
 	$('#slides').css("margin-left","20%");
+	for(var i=1; i < 11; i++) {
+	    $("#preview").find(".scale-height" + String(i)).removeAttr("style");
+	    $("#preview").find(".scale-height" + String(i)).removeClass("scale-height" + String(i));
+	}
 	jQueryResize();
 	preview = true;
     } else {
