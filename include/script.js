@@ -25,10 +25,12 @@ $(document).keydown(function(event) {
 		setSlide(--slide_index);
 	    break;
 	case 187: // plus sign
+	case 61:
 	    if(slide_scale < 1) slide_scale += 0.05;
 	    jQueryResize();
 	    break;
 	case 189: // minus sign
+	case 109:
 	    if(slide_scale > 0.05) slide_scale -= 0.05;
 	    jQueryResize();
 	    break;
@@ -108,8 +110,8 @@ function jQueryResize() {
 			  parseInt($("#slides").width()) + "px)");
     $(".next").css("-webkit-transform","matrix(1,0,0,1," + 
 			  parseInt($("#slides").width()) + ",0)");
-	$(".next").css("-ms-transform","translateX(" + 
-			  parseInt($("#slides").width()) + "px)");
+    $(".next").css("-ms-transform","translateX(" + 
+		      parseInt($("#slides").width()) + "px)");
     // set current slide css
     $(".current").css("-moz-transform","translate(0px)"); 
     $(".current").css("-webkit-transform","matrix(1,0,0,1,0,0)");
@@ -119,8 +121,8 @@ function jQueryResize() {
 			  -parseInt($("#slides").width()) + "px)");
     $(".previous").css("-webkit-transform","matrix(1,0,0,1," + 
 			  -parseInt($("#slides").width()) + ",0)");
-	$(".previous").css("-ms-transform","translateX(" + 
-			  -parseInt($("#slides").width()) + "px)");
+    $(".previous").css("-ms-transform","translateX(" + 
+		      -parseInt($("#slides").width()) + "px)");
 }
 
 $(window).ready(jQuerySetup);
