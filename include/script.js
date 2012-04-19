@@ -5,8 +5,8 @@
 var slides_classes = ['previous', 'current', 'next'];
 
 var slide_index;
-var slide_scale = 0.95; 
 var menu = false;
+if(!window.slide_scale) { var slide_scale = 0.95; }
 var slide_total;
 
 // Keypress commands
@@ -32,6 +32,9 @@ $(document).keydown(function(event) {
 	    break;
 	case 77: // m (menu)
 	    toggleCommandScreen();
+	    break;
+	case 80: // p (preview)
+	    addPreview();
 	    break;
 	case 83: // s (styles)
 	    break;
@@ -92,8 +95,9 @@ function jQueryResize() {
     $("article").css("margin-right",parseInt($("#slides").width()*(1-slide_scale)/2.0));
     $("article").css("padding-left",parseInt($("#slides").width()*slide_scale*1/18.0));
     $("article").css("padding-right",parseInt($("#slides").width()*slide_scale*1/18.0));
+    $("#slides").css("font-size",parseInt(slide_scale*25));
     for(var i=1; i < 11; i++) {
-	$(".scale-height" + String(i)).css("height",parseInt($("#slides").height()*slide_scale*0.1*i));
+	$(".scale-height" + String(i)).css("height",parseInt($("#slides").height()*0.1*i));
     }
     // set next slide css
     $(".next").css("-moz-transform","translate(" + 
@@ -156,4 +160,12 @@ function toggleCommandScreen() {
     }
 }
 
+function addPreview() {
+    $('body').append('<section id="preview"/>');
+    $('#preview').append('<h1>Preview</h1>');
+    $('#preview').append("<article class='preview'>" + $(".current").html() + "</article>");
+    $('#slides').css("width","80%");
+    $('#slides').css("margin-left","20%");
+    jQueryResize();
+}
 
