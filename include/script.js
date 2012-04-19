@@ -25,6 +25,7 @@ $(document).keydown(function(event) {
 		setSlide(--slide_index);
 	    break;
 	case 187: // plus sign
+	case 107:
 	case 61:
 	    if(slide_scale < 1) slide_scale += 0.05;
 	    jQueryResize();
@@ -42,7 +43,7 @@ $(document).keydown(function(event) {
 	case 83: // s (styles)
 	    break;
 	default:
-	    //alert(event.which);
+	    alert(event.which);
 	    break;
     }
 });
@@ -150,8 +151,8 @@ function toggleCommandScreen() {
 	$('body').append('<section id="menu"/>');
 	$('#menu').append('<h1>Menu</h1>');
 	$('#menu').append('<ul class="menu_list"/>');
-	$('.menu_list').append('<li>l/left arrow: next slide</li>');
-	$('.menu_list').append('<li>r/right arrow: previous slide</li>');
+	$('.menu_list').append('<li>h/left arrow: next slide</li>');
+	$('.menu_list').append('<li>l/right arrow: previous slide</li>');
 	$('.menu_list').append('<li>+:increase slide size</li>');
 	$('.menu_list').append('<li>-:decrease slide size</li>');
 	$('.menu_list').append('<li>m:toggle this menu</li>');
