@@ -1,6 +1,6 @@
 article {
-    color:#444444;
-    background:no-repeat scroll 98% 95% #f6f3e8;
+    color:#555555;
+    background:no-repeat scroll 98% 95% white;
 }
 
 article > h1,h2,h3 {
@@ -8,7 +8,7 @@ article > h1,h2,h3 {
 }
 
 pre {
-    background-color:#8f8f8f;
+    background-color:#F0F0F0;
     color:#222222;
     box-shadow:0 2px 6px rgba(0, 0, 0, 0.1) inset;
     font-family:'Droid Sans Mono','Courier New', monospace;
@@ -20,5 +20,7 @@ pre {
 }
 
 body {
-    background-color:#384048;
+    background: -webkit-linear-gradient(top, #EEEEEE, #AAAAAA);
+    background: -moz-linear-gradient(top, #EEEEEE, #AAAAAA);
+    background: -linear-gradient(top, #EEEEEE, #AAAAAA);
 }
