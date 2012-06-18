@@ -147,6 +147,7 @@ article.preview:hover {
     text-align:center;
     background-color:gray;
     border-radius:0 0 10px 10px;
+    font-size:1.2em;
     opacity:0;
     -moz-transition: -moz-transform 0.3s ease-out 0s;
     -webkit-transition: all 0.3s ease-out;
@@ -156,6 +157,11 @@ article.preview:hover {
 #controlpanel:hover {
     opacity:0.6;
 }
+
+#controlpanel > span {
+    padding:0 4px;
+}
+
 
 /* Various slide types */
 

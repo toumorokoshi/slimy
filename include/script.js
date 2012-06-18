@@ -69,10 +69,12 @@ function controlPanel() {
     $("body").append('<section id="controlpanel" class="scale-height1" ></section>');
     $("#controlpanel").append('<span class="leftbutton">&larr;</span>');
     $("#controlpanel").append('<span class="slidenum"></span>');
-    $("#controlpanel").append('<span class="menubutton">Menu</span>');
+    $("#controlpanel").append('<span class="menubutton" title="menu">M</span>');
+    $("#controlpanel").append('<span class="previewbutton" title="preview">P</span>');
     $("#controlpanel").append('<span class="rightbutton">&rarr;</span>');
     $(".slidenum").html(String(window.slide_index));
     $(".menubutton").click(toggleCommandScreen);
+    $(".previewbutton").click(addPreview);
 }
 
 function slideButton() {
