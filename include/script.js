@@ -175,13 +175,16 @@ function addPreview() {
 	$('body').append('<section id="preview"/>');
 	$('#preview').append('<h1>Preview</h1>');
 	$("#slides > article").each(function(index) {
-	    $('#preview').append("<article class='preview'>" + $(this).html() + "</article>");
+	    $('#preview').append("<article class='preview " + $(this).attr('class') + "'>" + $(this).html() + "</article>");
 	});
 	$("#preview > article").each(function(index) {
 	    $(this).click(function(){
 		setSlide(index + 1);
 		slide_index = index + 1;
 	    });
+	    for(c in slides_classes){
+		$(this).removeClass(slides_classes[c]);
+	    }
 	});
 	percent_width -= 20;
 	$('#slides').css("margin-left","20%");
