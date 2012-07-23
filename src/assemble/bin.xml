@@ -1,0 +1,26 @@
+<assembly>
+    <id></id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <fileSets>
+        <fileSet>
+            <directory>.</directory>
+            <outputDirectory>.</outputDirectory>
+            <includes>
+                <include>**</include>
+            </includes>
+            <excludes>
+                <exclude>pom.xml</exclude>
+                <exclude>src/**</exclude>
+                <exclude>**/target/**</exclude>
+                <exclude>**/*~</exclude>
+                <exclude>**/*.psd</exclude>
+                <exclude>.git/**</exclude>
+                <exclude>todo.org</exclude>
+            </excludes>
+            <fileMode>644</fileMode>
+            <directoryMode>755</directoryMode>
+        </fileSet>
+    </fileSets>
+</assembly>
