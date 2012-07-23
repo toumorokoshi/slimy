@@ -62,7 +62,19 @@ function jQuerySetup() {
     setSlide(window.slide_index);
     controlPanel();
     slideButton();
+    applyLinkLogic();
     jQueryResize();
+}
+
+function applyLinkLogic() {
+    $('a').click(function() {
+	if($(this).attr("href").match(/^#\d+$/)){
+	    var slide_num = parseInt($(this).attr("href").substr(1));
+	    if(slide_num <= slide_total) {
+		setSlide(slide_num);
+	    }
+	}
+    });
 }
 
 function controlPanel() {
@@ -146,6 +158,7 @@ function setSlide(id) {
     });
     $(".slidenum").html(String(id + 1));
     jQueryResize();
+    slide_index = id + 1;
 }
 
 function toggleCommandScreen() {

@@ -31,7 +31,12 @@
         <p>
 	  Slime is an html 5 slideshow template. The slideshow is opened in-browser, and utilizes html5, javascript, and css.
         </p>
-	<a href="#6">Go to slide 6</a>
+	<table>
+	  <tr><td>Table of Contents</td></tr>
+	  <tr><td><a href="#3">Why use slimy?</td></tr>
+	  <tr><td><a href="#4">Controls</td></tr>
+	  <tr><td><a href="#5">Advanced Usage</td></tr>
+	</table>
       </article>
       <article>
 	<h3>Why use slimy?</h3>
@@ -50,17 +55,54 @@
 	 <li>p: preview slides</li>
        </ul>
      </article>
-     <article>
+     <!--<article>
        <h3>Themes?</h3>
        <p>Themes can be included and contributed to themes. To use one, just include the css file!</p>
        <pre>
-&lt;link rel="stylsheet" type="text/css" href="themes/YOUR_THEME.css"/&gt;
+&lt;link rel="stylesheet" type="text/css" href="themes/YOUR_THEME.css"/&gt;
        </pre>
        <p>In this example, the default style, professional, is being used.</p>
        <span onclick='var fileref=document.createElement("link");
 	  fileref.setAttribute("rel", "stylesheet");
 	  fileref.setAttribute("type", "text/css");
 	  fileref.setAttribute("href", "themes/greyhound.css")'>Load Greyhound Theme</span>
+     </article>-->
+     <article>
+       <h3>Advanced Usage</h3>
+       <p>The following slides discuss some of the more rich functionality in slimy.</p>
+     </article>
+     <article>
+       <h3>Custom Variables</h3>
+       <p>Custom variables can be set in the html file, at the top in the head section with:</p>
+       <pre>
+&lt;script&gt;
+  var slide_scale = 0.5;
+&lt;/script&gt;
+       </pre>
+       <p>The following variables can be customized:</p>
+       <ul>
+	 <li>slide_scale: the initial size of the slide.</li>
+       </ul>
+     </article>
+     <article class="slimy_twocolumn">
+       <h3>Slide Templates</h3>
+       <div class="slimy_left">
+	   <p>An expiremental feature is slide templates. This allows for preset styles. For example, this slide is using the twocolomn layout.</p>
+	   <p>More examples will be added into the slide_examples.html file.</p>
+       </div>
+       <div class="slimy_right">
+	 <p>To use this template, add the class "slimy_twocolumn" to your slide, and add divs with the class "slimy_left" and "slimy_right" explicitely:</p>
+	 <pre>
+	   &lt;article class="slimy_twocolumn"&gt;
+	     &lt;div class="slimy_left"&gt;
+	       LEFT STUFF
+	     &lt;/div&gt;
+	     &lt;div class="slimy_right"&gt;
+	       RIGHT STUFF
+	     &lt;/div&gt;
+	   &lt;/article&gt;
+         </pre>
+       </div>
      </article>
      <article>
         <h1>Thank You!</h1>

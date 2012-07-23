@@ -166,17 +166,23 @@ article.preview:hover {
 /* Various slide types */
 
 /* two-column layout */
-.two-column {
+.slimy_two-column {
     display:inline;
 }
-.twocolumn > .left {
+.slimy_twocolumn > .slimy_left {
     float:left;
     width:48%;
     padding-right:2%;
 }
 
-.twocolumn > .right {
+.slimy_twocolumn > .slimy_right {
     float:right;
     width:48%;
     padding-left:2%;
+}
+
+/* image layout */
+.slimy_image > img {
+    float:left;
+    width:48%;
 }
