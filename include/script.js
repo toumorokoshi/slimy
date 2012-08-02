@@ -1,5 +1,5 @@
 /*
-  Google HTML5 Slides
+  Slimy HTML5 Slides
 */
 
 var slides_classes = ['previous', 'current', 'next'];
