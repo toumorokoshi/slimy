@@ -4,10 +4,12 @@ $(document).ready(function() {
     generateNavigation();
     addOverlay();
     addPreview();
+    generateAnchors();
     $('#slides').isotope({
         itemSelector : 'article',
         layoutMode : 'masonry'
     });
+    parseHash();
 });
 
 
@@ -28,19 +30,49 @@ $(document).keydown(function(event) {
         case 83: // s
             slides();
             break;
+        case 78: // n
+            $("#navigation").toggle();
+            break;
+        case 84: // t
+            toggleTop();
+            break;
         default:
             //alert(event.which);
             break;
     }
 });
 
+
 var slide_index = null;
 var total_slides;
 var slide_class = "slidenum";
 var mode = "tile";
+var anchors = {};
 
-function setup() {
-    addPreview();
+function generateAnchors() {
+    $("#slides > article").each(function(index) {
+        var hashname = $("h1", this)[0].innerHTML.replace(/\s+/g, '').toLowerCase();
+        anchors[hashname] = index;
+    });
+}
+
+
+function parseHash() {
+    hash = window.location.hash.substr(1);
+    if(hash.match(/^\d+$/)) {
+        setSlide(parseInt(hash));
+    } else if(anchors.hasOwnProperty(hash)) {
+        setSlide(anchors[hash]);
+    }
+}
+
+function toggleTop() {
+    $("#top").toggle();
+    if($("#top").is(":visible")) {
+        $("#content").height("95%");
+    } else {
+        $("#content").height("100%");
+    }
 }
 
 function openSlide(index) {
@@ -48,6 +80,10 @@ function openSlide(index) {
     var slide = $(slide_selector);
     slide_index = index;
     expandSlide(index);
+    for(var key in anchors) {
+        if(anchors[key] == index)
+            window.location.hash = key;
+    }
     $('#slides').isotope({
         filter: slide_selector
     });
@@ -56,6 +92,7 @@ function openSlide(index) {
 function shrinkSlide(index) {
     var slide = $("." + slide_class + index.toString());
     slide.addClass("preview");
+    window.location.hash = "";
     $(".overlay", slide).show();
 }
 
